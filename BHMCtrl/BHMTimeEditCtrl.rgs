@@ -1,0 +1,40 @@
+HKCR
+{
+	BHMCtrl.TimeEditCtrl.1 = s 'BHMTimeEditCtrl Class'
+	{
+		CLSID = s '{389612AF-D16F-11D2-9CE8-0080C8763FA4}'
+		'Insertable'
+	}
+	BHMCtrl.TimeEditCtrl = s 'BHMTimeEditCtrl Class'
+	{
+		CLSID = s '{389612AF-D16F-11D2-9CE8-0080C8763FA4}'
+		CurVer = s 'BHMCtrl.TimeEditCtrl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {389612AF-D16F-11D2-9CE8-0080C8763FA4} = s 'BHMTimeEditCtrl Class'
+		{
+			ProgID = s 'BHMCtrl.TimeEditCtrl.1'
+			VersionIndependentProgID = s 'BHMCtrl.TimeEditCtrl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+                        verb
+                        {
+                                '1' = s 'Properties, 0, 2'
+                                '2' = s 'Refresh, 0, 2'
+                        }
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{389612A0-D16F-11D2-9CE8-0080C8763FA4}'
+			'Version' = s '1.0'
+		}
+	}
+}

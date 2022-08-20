@@ -1,0 +1,23 @@
+HKCR
+{
+	BHMCtrl.TEPpg.1 = s 'TEPpg Class'
+	{
+		CLSID = s '{DECC1F80-E05F-11D2-A7FE-0080C8763FA4}'
+	}
+	BHMCtrl.TEPpg = s 'TEPpg Class'
+	{
+		CLSID = s '{DECC1F80-E05F-11D2-A7FE-0080C8763FA4}'
+		CurVer = s 'BHMCtrl.TEPpg.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DECC1F80-E05F-11D2-A7FE-0080C8763FA4} = s 'TEPpg Class'
+		{
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

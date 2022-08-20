@@ -1,0 +1,87 @@
+// BHMCtrl.idl : IDL source for BHMCtrl.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (BHMCtrl.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(389612AE-D16F-11D2-9CE8-0080C8763FA4),
+		dual,
+		helpstring("IBHMTimeEditCtrl Interface"),
+		pointer_default(unique)
+	]
+	interface IBHMTimeEditCtrl : IDispatch
+	{
+		[propput, id(DISPID_BACKCOLOR)]
+		HRESULT BackColor([in]OLE_COLOR clr);
+		[propget, id(DISPID_BACKCOLOR)]
+		HRESULT BackColor([out,retval]OLE_COLOR* pclr);
+
+		[propput, id(DISPID_FORECOLOR)]
+		HRESULT ForeColor([in]OLE_COLOR clr);
+		[propget, id(DISPID_FORECOLOR)]
+		HRESULT ForeColor([out,retval]OLE_COLOR* pclr);
+
+		[propputref, id(DISPID_FONT)]
+		HRESULT Font([in]IFontDisp* pFont);
+		[propput, id(DISPID_FONT)]
+		HRESULT Font([in]IFontDisp* pFont);
+		[propget, id(DISPID_FONT)]
+		HRESULT Font([out, retval]IFontDisp** ppFont);
+
+		[propget, id(1), helpstring("The text shown")] HRESULT Text([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("The text shown")] HRESULT Text([in] BSTR newVal);
+		[propget, id(2), helpstring("property ReadOnly")] HRESULT ReadOnly([out, retval] BOOL *pVal);
+		[propput, id(2), helpstring("property ReadOnly")] HRESULT ReadOnly([in] BOOL newVal);
+	};
+
+[
+	uuid(389612A0-D16F-11D2-9CE8-0080C8763FA4),
+	version(1.0),
+	helpstring("BHMCtrl 1.0 Type Library")
+]
+library BHMCTRLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(389612B0-D16F-11D2-9CE8-0080C8763FA4),
+		helpstring("_IBHMTimeEditCtrlEvents Interface")
+	]
+	dispinterface _IBHMTimeEditCtrlEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("Click Event")] void Click();
+		[id(2), helpstring("KeyDown Event")] void KeyDown(short * KeyCode, short Shift);
+		[id(3), helpstring("KeyPress Event")] void KeyPress([in, out] short * KeyAscii);
+		[id(4), helpstring("method Change")] void Change();
+	};
+	
+	
+	[
+		uuid(389612AF-D16F-11D2-9CE8-0080C8763FA4),
+		helpstring("BHMTimeEditCtrl Class")
+	]
+	coclass BHMTimeEditCtrl
+	{
+		[default] interface IBHMTimeEditCtrl;
+		[default, source] dispinterface _IBHMTimeEditCtrlEvents;
+	};
+
+	[
+		uuid(DECC1F80-E05F-11D2-A7FE-0080C8763FA4),
+		helpstring("TEPpg Class")
+	]
+	coclass TEPpg
+	{
+		interface IUnknown;
+	};
+};
